@@ -1,6 +1,5 @@
-
 After do 
-    Capybara.current_session.driver.quit
+  Capybara.current_session.driver.quit
 end
 
 Before '@maximize' do
@@ -12,5 +11,5 @@ AfterStep('@slow') do
 end
 
 AfterStep('@debug') do |result, step|
-  puts "Completado paso: #{step.text}"
+  puts "Step completed: #{step.text}"
 end

@@ -1,32 +1,32 @@
-begin require 'rspec/expectations'; rescue LoadError; require 'spec/expectations'; end
+begin 
+  require 'rspec/expectations'
+rescue LoadError
+  require 'spec/expectations'
+end
+
 require 'capybara'
 require 'capybara/dsl'
 require 'capybara/cucumber'
-require 'capybara-screenshot/cucumber'
+require 'selenium-webdriver'
 
-Capybara.default_driver = :selenium
-
-# Set the host the Capybara tests should be run against
-Capybara.app_host = ENV["CAPYBARA_HOST"]
-
-# Set the time (in seconds) Capybara should wait for elements to appear on the page
-Capybara.default_max_wait_time = 15
-Capybara.default_driver = :selenium
-Capybara.app_host = "http://demo.borland.com/gmopost/"
-
-class CapybaraDriverRegistrar
-  # register a Selenium driver for the given browser to run on the localhost
-  def self.register_selenium_driver(browser)
-    Capybara.register_driver :selenium do |app|
-      Capybara::Selenium::Driver.new(app, :browser => browser)
-    end
-  end
-
+Capybara.register_driver :chrome do |app|
+  options = Selenium::WebDriver::Chrome::Options.new
+  options.add_argument('--start-maximized')
+  options.add_argument('--ignore-certificate-errors')
+  options.add_argument('--allow-running-insecure-content')
+  options.add_argument('--disable-web-security')
+  options.add_argument('--no-proxy-server')
+  options.add_argument('--disable-gpu')
+  options.add_argument('--no-sandbox')
+  
+  Capybara::Selenium::Driver.new(app, browser: :chrome, options: options)
 end
-# Register various Selenium drivers
-#CapybaraDriverRegistrar.register_selenium_driver(:internet_explorer)
-#CapybaraDriverRegistrar.register_selenium_driver(:firefox)
-CapybaraDriverRegistrar.register_selenium_driver(:chrome)
-Capybara.run_server = false
-#World(Capybara)
 
+Capybara.configure do |config|
+  config.default_driver = :chrome
+  config.app_host = "http://demo.borland.com/gmopost"
+  config.default_max_wait_time = 30
+  config.run_server = false
+end
+
+World(Capybara::DSL)
