@@ -1,4 +1,5 @@
 require_relative '../pages/CatalogPage'
+
 def catalog
   @catalog ||= CatalogPage.new
 end
