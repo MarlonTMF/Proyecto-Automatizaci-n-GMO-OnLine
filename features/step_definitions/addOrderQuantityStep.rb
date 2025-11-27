@@ -21,7 +21,6 @@ When(/^I (?:enter|remove) the order quantities as (?:show|shown) below:$/) do |t
 end
 
 Then('I should see the following quantities:') do |table|
-  # XPath robusto para la tabla de resultados (evita tablas de diseño externas)
   xpath = "//body//form//table//table//tr[%s]/td[%s]"
   catalog.compare_fields_with_table(table, 2, CatalogPage::SUMMARY_MAPPING, xpath)
 end

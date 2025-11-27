@@ -40,4 +40,11 @@ class CatalogPage < Form
   def accept_alert_popup
     page.driver.browser.switch_to.alert.accept
   end
+  def go_back
+    page.go_back
+  end
+
+  def verify_page_content(text)
+    expect(page).to have_content(text)
+  end
 end
