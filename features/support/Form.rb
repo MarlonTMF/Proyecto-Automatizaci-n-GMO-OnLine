@@ -21,4 +21,20 @@ class Form
       end
     end
   end
+  
+  def compare_fields_with_table(table, start_row, columns, path_template)
+    table.raw.each_with_index do |row, index|
+      field_name, expected_value = row
+      
+      if columns.has_key?(field_name)
+        row_index = start_row + index
+        column_index = columns[field_name]
+        
+        xpath = path_template % [row_index, column_index]
+        actual_value = find(:xpath, xpath).value
+        
+        expect(actual_value).to eq(expected_value)
+      end
+    end
+  end
 end
