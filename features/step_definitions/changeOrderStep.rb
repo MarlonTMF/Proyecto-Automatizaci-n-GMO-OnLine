@@ -18,6 +18,5 @@ end
 
 Then('I should see the updated quantities:') do |table|
   xpath_template = "//body//form//table//table//tr[%s]/td[%s]"
-  start_row = 2
-  catalog.compare_fields_with_table(table, start_row, CatalogPage::SUMMARY_MAPPING, xpath_template)
+  catalog.compare_fields_with_table(table, 2, CatalogPage::SUMMARY_MAPPING, xpath_template)
 end

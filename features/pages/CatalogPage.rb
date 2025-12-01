@@ -40,6 +40,7 @@ class CatalogPage < Form
   def accept_alert_popup
     page.driver.browser.switch_to.alert.accept
   end
+
   def go_back
     page.go_back
   end

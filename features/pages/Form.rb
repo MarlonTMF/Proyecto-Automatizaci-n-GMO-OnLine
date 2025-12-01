@@ -25,10 +25,14 @@ class Form
   def fill_in_fields(table, fields_mapping)
     data = table.raw 
     data.each do |row|
-      field_name, field_value = row
+      field_name, raw_value = row
+      
+      # Lógica para transformar "blank" en vacío real
+      final_value = raw_value.to_s.downcase == 'blank' ? "" : raw_value
+
       if fields_mapping.has_key?(field_name)
         config = fields_mapping[field_name]
-        fill_field(config["id"], config["type"], field_value)
+        fill_field(config["id"], config["type"], final_value)
       end
     end
   end
