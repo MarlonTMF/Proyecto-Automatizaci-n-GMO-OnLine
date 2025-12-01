@@ -1,7 +1,7 @@
 Feature: Show receipt Information
   As an online shopper,
-  I want to review my billing information,
-  so that I can ensure my details are correct before completing my purchase.
+  I want to see a detailed order receipt after purchase,
+  so that I can verify all changes and keep accurte records.
 
   Background:
     Given I am on the GMO Home Page
