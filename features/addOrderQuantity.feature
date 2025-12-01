@@ -30,7 +30,7 @@ Feature: Add Order Quantity
       | Padded Socks            | blank    |
     And I click on the "Place An Order" button
     Then I should see the following message "Please Order Something First"
-  @WR
+  @quit
   Scenario: Add Order quantities with letters
     When I enter the order quantities as shown below:
       | Product Name            | Quantity  |
