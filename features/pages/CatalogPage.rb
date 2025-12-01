@@ -48,4 +48,8 @@ class CatalogPage < Form
   def verify_page_content(text)
     expect(page).to have_content(text)
   end
+
+  def verify_quantities_are_reset(table)
+    verify_input_values(table, PRODUCT_MAPPING)
+  end
 end

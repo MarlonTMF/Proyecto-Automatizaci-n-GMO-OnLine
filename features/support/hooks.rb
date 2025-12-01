@@ -1,5 +1,7 @@
-After do 
-  Capybara.current_session.driver.quit
+require 'fileutils'
+
+Before do
+  page.driver.browser.manage.window.maximize
 end
 
 Before '@maximize' do
@@ -13,3 +15,4 @@ end
 AfterStep('@debug') do |result, step|
   puts "Step completed: #{step.text}"
 end
+
