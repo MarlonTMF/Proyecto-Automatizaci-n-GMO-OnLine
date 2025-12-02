@@ -13,9 +13,8 @@ Feature: Fill in billing information
     And I click on the "Proceed With Order" button
   
 
-  # ====================================================
+  
   # ESCENARIO 1-3: Pruebas POSITIVAS con diferentes tarjetas
-  # ====================================================
   # Objetivo: Verificar que se puede completar una compra
   # con diferentes tipos de tarjetas de crédito válidas
   Scenario Outline: Fill in my billing information with different card types
@@ -40,9 +39,8 @@ Feature: Fill in billing information
     | Maria  | 3er anillo | Scz  | Scz  | 65432 | 456-789-0123 | maria@gmail.com  | Visa             | 1234-1234-1234-1234| 01/28       |
     | Ana    | Zona Sur   | Cbba | Cbba | 98765 | 321-654-9870 | ana@gmail.com    | MasterCard       | 1234-1234-1234-1234| 12/28       |
 
-  # ====================================================
+  
   # ESCENARIO 4-12: Pruebas de CAMPOS REQUERIDOS
-  # ====================================================
   # Objetivo: Verificar que la aplicación valida campos obligatorios
   # Cada prueba deja un campo diferente vacío
   Scenario Outline: Fill in my billing information with missing fields
@@ -87,9 +85,7 @@ Feature: Fill in billing information
     # 12. Campo Expiration vacío - muestra validación específica
     | Pepito | Cala cala  | Cbba | Cbba | 33126 | 123-123-1234 | pepito@gmail.com | American Express | 1234-123456-12345  |             | Please enter a valid date of the form 'MM/YY' in this field. |
 
-  # ====================================================
   # ESCENARIO 13: Validación de ZIP CODE inválido
-  # ====================================================
   # Objetivo: Verificar que no acepta códigos postales inválidos
   # ZIP = 0 (debe ser de 5 dígitos)
   Scenario: Fill in my billing information with a wrong zip code
@@ -109,9 +105,7 @@ Feature: Fill in billing information
     And I click on the "Place The Order" button
     Then I should see the following message "Please enter a valid zip code in this field."
 
-  # ====================================================
   # ESCENARIO 14: Validación de PHONE NUMBER inválido
-  # ====================================================
   # Objetivo: Verificar que no acepta formatos de teléfono incorrectos
   # Phone = 123 (debe ser formato ###-###-####)
   Scenario: Fill in my billing information with a wrong phone number
@@ -131,9 +125,7 @@ Feature: Fill in billing information
     And I click on the "Place The Order" button
     Then I should see the following message "Please enter a valid phone number in this field."
 
-  # ====================================================
   # ESCENARIO 15: Validación de CARD NUMBER MasterCard
-  # ====================================================
   # Objetivo: Verificar validación específica para MasterCard
   # Card Number = 1234 (debe ser ####-####-####-####)
   Scenario: Fill in my billing information with a wrong card number for Master Card
@@ -153,9 +145,7 @@ Feature: Fill in billing information
     And I click on the "Place The Order" button
     Then I should see the following message "Please enter a valid card number of the form '1234-1234-1234-1234' in this field."
   
-  # ====================================================
   # ESCENARIO 16: Validación de CARD NUMBER Visa
-  # ====================================================
   # Objetivo: Verificar validación específica para Visa
   # Card Number = 1234 (debe ser ####-####-####-####)
   Scenario: Fill in my billing information with a wrong card number for Visa
@@ -175,9 +165,7 @@ Feature: Fill in billing information
     And I click on the "Place The Order" button
     Then I should see the following message "Please enter a valid card number of the form '1234-1234-1234-1234' in this field."
 
-  # ====================================================
   # ESCENARIO 17: Validación de CARD NUMBER American Express
-  # ====================================================
   # Objetivo: Verificar validación específica para American Express
   # Card Number = 1234 (debe ser ####-######-#####)
   Scenario: Fill in my billing information with a wrong card number for American Express
@@ -197,9 +185,7 @@ Feature: Fill in billing information
     And I click on the "Place The Order" button
     Then I should see the following message "Please enter a valid card number of the form '1234-123456-12345' in this field."
 
-  # ====================================================
-  # ESCENARIO 18: Validación de EXPIRATION DATE
-  # ====================================================
+  # ESCENARIO 17: Validación de EXPIRATION DATE
   # Objetivo: Verificar que no acepta formato de fecha incorrecto
   # Expiration = 12/2024 (debe ser MM/YY)
   Scenario: Fill in my billing information with a wrong Expiration Date Card

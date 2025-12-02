@@ -20,22 +20,17 @@ Then('The billing information should be copied to the shipping fields as shown b
 end
 
 Then(/^I should see the following message "([^"]*)"$/) do |message|
-  # Espera un momento para que aparezca la alerta
   sleep 2
   
   begin
-    # Captura la alerta
     alert = page.driver.browser.switch_to.alert
     alert_text = alert.text
     
-    # Verifica que el mensaje coincida
     expect(alert_text).to eq(message)
     
-    # Acepta la alerta para cerrarla
     alert.accept
     
   rescue Selenium::WebDriver::Error::NoSuchAlertError
-    # Si no hay alerta, verifica si el mensaje está en la página
     if page.has_content?(message)
       puts "✅ Mensaje encontrado en la página: #{message}"
     else

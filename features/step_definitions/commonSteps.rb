@@ -21,7 +21,6 @@ And(/^I click on the "([^"]*)" button$/) do |button_name|
 end
 
 And(/^I am at "([^"]*)" Page$/) do |expected_title_page|
-  # Verifica si hay alertas abiertas antes de buscar contenido
   begin
     alert = page.driver.browser.switch_to.alert
     alert_text = alert.text
@@ -29,7 +28,6 @@ And(/^I am at "([^"]*)" Page$/) do |expected_title_page|
     alert.accept
     sleep 1
   rescue Selenium::WebDriver::Error::NoSuchAlertError
-    # No hay alerta, continúa normalmente
   end
   
   expect(page).to have_content(expected_title_page)
