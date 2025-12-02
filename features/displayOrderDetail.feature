@@ -6,7 +6,6 @@ Feature: Display Detailed Order Summary
   Background:
     Given I am on the GMO Home Page
     And I click on the "Enter GMO OnLine" button
-    # Optimización: Validamos estar en el catálogo una sola vez para todos los escenarios
     Given I am at "OnLine Catalog" Page
 
   Scenario: Display Total Prices Based on product quantities

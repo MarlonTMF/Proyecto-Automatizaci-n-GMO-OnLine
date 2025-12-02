@@ -35,7 +35,6 @@ class Form
     end
   end
 
-  # Validar Textos en Tablas (para Display Order)
   def compare_fields_with_table(table, start_row, columns_mapping, xpath_template)
     data = table.raw
     current_row = start_row
@@ -70,7 +69,6 @@ class Form
     end
   end
 
-  # --- NUEVO: Validar Valores de Inputs (para Reset Form) ---
   def verify_input_values(table, fields_mapping)
     data = table.raw
     data.each do |row|
