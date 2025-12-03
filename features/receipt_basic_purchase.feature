@@ -1,18 +1,19 @@
-Feature: Show receipt Information
+Feature: Smoke Test - Basic Purchase Flow
   As an online shopper,
-  I want to see a detailed order receipt after purchase,
-  so that I can verify all charges and keep accurate  records.
+  I want to verify the basic purchase functionality works correctly with different users,
+  so that I can trust the system handles various customer data properly.
 
   Background:
     Given I am on the GMO Home Page
     And I click on the "Enter GMO OnLine" button
     And I enter the order quantities as show below:
         | Product Name                | Quantity |
-        | 3 Person Dome Tent          | 9       |
+        | 3 Person Dome Tent          | 1        |
     And I click on the "Place An Order" button
     And I click on the "Proceed With Order" button
 
-  Scenario Outline: Show all billing and shipping information on the receipt
+  @smoke @fast
+  Scenario Outline: Basic receipt validation with single product
     Given I am at "Billing Information" Page
     When I enter the bill to information as shown below:
       | Name        | <Name>           |
@@ -37,24 +38,24 @@ Feature: Show receipt Information
       
     And I should see the correct order amounts on the receipt robustly:
       | Field | Expected Value |
-      | Product Total | $ 2699.91 |
-      | Sales Tax | $ 135.00 |
+      | Product Total | $ 299.99  |
+      | Sales Tax | $ 15.00      |
       | Shipping & Handling | $ 5.00 |
-      | Grand Total | $ 2839.91 |
+      | Grand Total | $ 319.99   |
 
     And I should see the correct product details on the receipt:
       | Field | Expected Value |
-      | Quantity | 9 |
+      | Quantity | 1 |
       | Product Description | 3 Person Dome Tent |
       | Delivery Status | To Be Shipped |
       | Unit Price | $ 299.99 |
-      | Total Price | $ 2699.91 |
+      | Total Price | $ 299.99 |
 
     And I click for return on the "Return to Home Page" button
     
     Examples:
-    | Name     | Address        | City | State | Zip   | Phone        | E-mail             | Card Number        | Expiration | Postal Address     |
-    | Walter   | Av. Blanco Galindo | Cbba | Cbba  | 59111 | 777-123-4567 | walter@mail.com    | 1234-567890-11111  | 03/26      | Cbba, Cbba 59111 |
-    | Marlon   | Av. Pirai       | Cbba | Cbba  | 59112 | 777-234-5678 | marlon@mail.com    | 1234-567890-22222  | 06/27      | Cbba, Cbba 59112 |
-    | Fernando | Av. America     | Cbba | Cbba  | 59113 | 777-345-6789 | fernando@mail.com  | 1234-567890-33333  | 09/28      | Cbba, Cbba 59113 |
-    
+      | Name     | Address   | City  | State | Zip   | Phone        | E-mail          | Card Number       | Expiration | Postal Address |
+      | TestUser1| 123 Main St|SmokeCity| SC  | 12345 | 555-111-2222 | test1@test.com  | 1111-2222-3333    | 12/25      | SmokeCity, SC 12345 |
+      | TestUser2| 456 Oak Ave|TestTown | TT  | 54321 | 555-333-4444 | test2@test.com  | 4444-5555-6666    | 06/26      | TestTown, TT 54321 |
+      | TestUser3| 789 Pine Rd|QuickCity| QC  | 98765 | 555-777-8888 | test3@test.com  | 7777-8888-9999    | 09/27      | QuickCity, QC 98765 |
+
