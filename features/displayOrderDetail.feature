@@ -6,7 +6,7 @@ Feature: Display Detailed Order Summary
   Background:
     Given I am on the GMO Home Page
     And I click on the "Enter GMO OnLine" button
-    Given I am at "OnLine Catalog" Page
+    And I am at "OnLine Catalog" Page
 
   Scenario: Display Total Prices Based on product quantities
     When I enter the order quantities as shown below:
